@@ -1,20 +1,26 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
 
 version '0.1.1'
 
 android {
 
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
 
-        minSdkVersion 11
-        targetSdkVersion 25
+        minSdkVersion 14
+        targetSdkVersion 27
         versionCode 1
         versionName version
+    }
+
+    sourceSets {
+
+        main.java.srcDirs += 'src/main/kotlin'
     }
 
     buildTypes {
@@ -29,10 +35,12 @@ android {
 
 dependencies {
 
-    compile 'com.android.support:support-annotations:25.1.0'
-}
+    // Support
+    compile 'com.android.support:appcompat-v7:27.0.2'
+    compile 'com.android.support:support-annotations:27.9.2'
 
-group = 'com.github.moraisigor'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
 
 install {
 
